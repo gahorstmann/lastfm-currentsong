@@ -15,7 +15,7 @@ steps:
       - name: 'source-code'
         path: '/build/source-code'
     args: [
-      "--dockerfile=.devops/dockerfiles/Dockerfile",
+      "--dockerfile=Dockerfile",
       "--context=/build/source-code",
       "--destination=gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA",
       "--destination=gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest",
