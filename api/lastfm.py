@@ -9,7 +9,7 @@ from flask import Flask, Response, jsonify, render_template, templating, request
 
 load_dotenv(find_dotenv())
 
-LASTFM_TOKEN = "e6af3eca87e3c42b5a3baaf21ff7ff92" #os.getenv("LASTFM_TOKEN")
+LASTFM_TOKEN = os.getenv("LASTFM_TOKEN")
 FALLBACK_THEME = "default.html.j2"
 
 app = Flask(__name__)
