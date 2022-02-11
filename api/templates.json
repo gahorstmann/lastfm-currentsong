@@ -1,0 +1,4 @@
+{
+  "dark": "dark.html.j2",
+  "light": "default.html.j2"
+}
