@@ -22,4 +22,12 @@ Use `?user=USER_LASTFM&theme=dark`
 
 ![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
 
+### Reload
+
+You can use reload to refresh the page using this URL parameter.
+
+- `reload` - using in milliseconds(ms) `1000ms` = `1`
+
+Use `?user=USER_LASTFM&reload=5000`
+
 ## Project base: [novatorem](https://github.com/novatorem/novatorem)
