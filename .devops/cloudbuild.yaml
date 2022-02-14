@@ -30,5 +30,7 @@ steps:
       - run
       - deploy
       - $_IMAGE_NAME
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
+      - --image
+      - gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA
+      - --region
+      - $_REGION_NAME
