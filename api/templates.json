@@ -1,0 +1,35 @@
+{
+  "style": {
+    "default": "default.html.j2"
+  },
+  "themes": {
+    "light": {
+      "color": {
+        "background": "#ffffff",
+        "song": "#222222",
+        "artist": "#222222"
+      }
+    },
+    "dark": {
+      "color": {
+        "background": "#121212",
+        "song": "#ffffff",
+        "artist": "#ffffff"
+      }
+    },
+    "dracula": {
+      "color": {
+        "background": "#44475a",
+        "song": "#ff79c6",
+        "artist": "#bd93f9"
+      }
+    },
+    "nord": {
+      "color": {
+        "background": "#3B4252",
+        "song": "#5E81AC",
+        "artist": "#81A1C1"
+      }
+    }
+  }
+}

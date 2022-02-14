@@ -11,7 +11,6 @@ from flask import Flask, Response, jsonify, render_template, templating, request
 load_dotenv(find_dotenv())
 
 LASTFM_TOKEN = os.getenv("LASTFM_TOKEN")
-FALLBACK_THEME = "light.html.j2"
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -24,13 +23,23 @@ def nowPlaying(user_lasftm):
         return {}
     return response.json()
 
-def getTemplate(theme_select):
+def getTheme(theme_select):
     try:
-        
-        return theme_select + ".html.j2"
+        file = open("templates.json", "r")
+        templates = json.loads(file.read())
+        return templates["themes"][theme_select]
     except Exception as e:
         print(f"Failed to load templates.")
-        return FALLBACK_THEME
+        return templates["themes"]["light"]
+
+def getStyle(style_select):
+    try:
+        file = open("templates.json", "r")
+        templates = json.loads(file.read())
+        return templates["style"][style_select]
+    except Exception as e:
+        print(f"Failed to load templates.")
+        return templates["style"]["default"]
 
 def barGen(barCount):
     barCSS = ""
@@ -49,7 +58,7 @@ def loadImageB64(url):
     response = requests.get(url)
     return b64encode(response.content).decode("ascii")
 
-def makeSVG(data, theme_select):
+def makeSVG(data, theme_select, style_select, time_refresh):
     barCount = 84
     contentBar = "".join(["<div class='bar'></div>" for i in range(barCount)])
     barCSS = barGen(barCount)
@@ -66,25 +75,33 @@ def makeSVG(data, theme_select):
         songName = "NaN"
         songURI = "https://github.com/apigamers/lastfm.currentsong"
 
+    template = getTheme(theme_select)
+    
     dataDict = {
         "contentBar": contentBar,
         "barCSS": barCSS,
         "artistName": artistName,
         "songName": songName,
         "songURI": songURI,
-        "image": image
+        "image": image,
+        "backgroundColor": template["color"]["background"],
+        "songColor": template["color"]["song"],
+        "artistColor": template["color"]["artist"],
+        "timeRefresh": time_refresh
     }
 
-    return render_template(getTemplate(theme_select), **dataDict)
+    return render_template(getStyle(style_select), **dataDict)
 
 @app.route('/current', methods=['GET'])
 def current():
     user_lasftm = request.args.get('user') or 'gabriel_ah'
     theme_select = request.args.get('theme') or 'light'
+    style_select = request.args.get('style') or 'default'
+    time_refresh = request.args.get('reload') or '1500000000'
     
     data = nowPlaying(user_lasftm)
     
-    svg = makeSVG(data, theme_select)
+    svg = makeSVG(data, theme_select, style_select, time_refresh)
 
     resp = Response(svg, mimetype="image/svg+xml")
     resp.headers["Cache-Control"] = "s-maxage=1"
