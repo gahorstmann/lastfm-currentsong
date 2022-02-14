@@ -66,8 +66,8 @@ def makeSVG(data, theme_select, style_select, time_refresh):
         item = data["recenttracks"]["track"][0]
         image = loadImageB64(item["image"][3]["#text"])
         artistName = item["artist"]["#text"]
-        songName = item["name"]
-        songURI = item["url"]
+        songName = item["name"].replace("&", "&amp;")
+        songURI = item["url"].replace("&", "&amp;")
     except Exception as e:
         image = loadImageB64("https://i.imgur.com/czRgoge.gif")
         artistName = "NaN"
