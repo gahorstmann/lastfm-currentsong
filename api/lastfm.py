@@ -3,6 +3,7 @@ import json
 import random
 import requests
 
+
 from base64 import b64encode
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask, Response, jsonify, render_template, templating, request
@@ -10,7 +11,7 @@ from flask import Flask, Response, jsonify, render_template, templating, request
 load_dotenv(find_dotenv())
 
 LASTFM_TOKEN = os.getenv("LASTFM_TOKEN")
-FALLBACK_THEME = "default.html.j2"
+FALLBACK_THEME = "light.html.j2"
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -25,9 +26,8 @@ def nowPlaying(user_lasftm):
 
 def getTemplate(theme_select):
     try:
-        file = open("templates.json", "r")
-        templates = json.loads(file.read())
-        return templates[theme_select]
+        
+        return theme_select + ".html.j2"
     except Exception as e:
         print(f"Failed to load templates.")
         return FALLBACK_THEME
@@ -49,7 +49,7 @@ def loadImageB64(url):
     response = requests.get(url)
     return b64encode(response.content).decode("ascii")
 
-def makeSVG(data, background_color, border_color, theme_select):
+def makeSVG(data, theme_select):
     barCount = 84
     contentBar = "".join(["<div class='bar'></div>" for i in range(barCount)])
     barCSS = barGen(barCount)
@@ -72,9 +72,7 @@ def makeSVG(data, background_color, border_color, theme_select):
         "artistName": artistName,
         "songName": songName,
         "songURI": songURI,
-        "image": image,
-        "background_color": background_color,
-        "border_color": border_color
+        "image": image
     }
 
     return render_template(getTemplate(theme_select), **dataDict)
@@ -82,13 +80,11 @@ def makeSVG(data, background_color, border_color, theme_select):
 @app.route('/current', methods=['GET'])
 def current():
     user_lasftm = request.args.get('user') or 'gabriel_ah'
-    theme_select = request.args.get('theme') or 'default'
-    background_color = request.args.get('background_color') or "545454"
-    border_color = request.args.get('border_color') or "545454"
-
+    theme_select = request.args.get('theme') or 'light'
+    
     data = nowPlaying(user_lasftm)
     
-    svg = makeSVG(data, background_color, border_color, theme_select)
+    svg = makeSVG(data, theme_select)
 
     resp = Response(svg, mimetype="image/svg+xml")
     resp.headers["Cache-Control"] = "s-maxage=1"

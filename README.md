@@ -10,12 +10,15 @@ Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current?us
 
 You can customize the appearance of your Card however you wish with URL params.
 
-- `theme` - Pre-defined themes `light` or `dark`
-- `background_color` - Card's background color (hex color) without `#`
-- `border_color` - Card border color (hex color) without `#`
+Pre-defined themes:
 
-Use `?user=USER_LASTFM&background_color=8b0000&border_color=FF0000`
+- `light`(default)
+- `dark`
+- `nord`
+- `dracula`
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&background_color=8b0000&border_color=FF0000)
+Use `?user=USER_LASTFM&theme=dark`
+
+![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
 
 ## Project base: [novatorem](https://github.com/novatorem/novatorem)
