@@ -13,7 +13,6 @@ load_dotenv(find_dotenv())
 LASTFM_TOKEN = os.getenv("LASTFM_TOKEN")
 
 app = Flask(__name__)
-app.config["DEBUG"] = True
 
 def nowPlaying(user_lasftm):
     playing_url = "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={}&api_key={}&format=json&limit=1".format(user_lasftm, LASTFM_TOKEN)
@@ -65,7 +64,7 @@ def makeSVG(data, theme_select, style_select, time_refresh):
 
     try:
         item = data["recenttracks"]["track"][0]
-        image = loadImageB64(item["image"][1]["#text"])
+        image = loadImageB64(item["image"][3]["#text"])
         artistName = item["artist"]["#text"]
         songName = item["name"]
         songURI = item["url"]
