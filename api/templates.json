@@ -26,8 +26,8 @@
     },
     "nord": {
       "color": {
-        "background": "#3B4252",
-        "song": "#5E81AC",
+        "background": "#2E3440",
+        "song": "#88C0D0",
         "artist": "#81A1C1"
       }
     }
