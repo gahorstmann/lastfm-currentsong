@@ -2,10 +2,10 @@
 
 ## Using
 
-Access this link `https://lastfm-currentsong.apigamers.com/current?user=<user_lastfm>` and change the parameters as needed
+Access this link `https://lastfm-currentsong.apigamers.com/current?user=<user_lastfm>` and change the parameters as needed. 
 
-Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=USER_LASTFM)`
-Using in OBS: widht: 480 and height 133
+- Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=USER_LASTFM)`. 
+- Using in OBS: widht: `480` and height: `133`
 
 ### Theme
 
