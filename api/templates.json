@@ -1,6 +1,7 @@
 {
   "style": {
-    "default": "default.html.j2"
+    "default": "default.html.j2",
+    "spotify": "spotify.html.j2"
   },
   "themes": {
     "light": {

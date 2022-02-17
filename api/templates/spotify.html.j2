@@ -1,0 +1,80 @@
+<svg width="300" height="80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="300" height="80">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="container">
+            <style>
+                .main {
+                    /*margin-top: 40px;*/
+                    display: flex;
+                }
+                
+                .container {
+                    margin-top: 2px;
+                    margin-left: 2px;
+                    background-color: {{backgroundColor}};
+                }
+
+                .art {
+                    width: 25%;
+                    float: left;
+                    margin-left: -5px;
+                }
+
+                .content {
+                    width: 71%;
+                }
+
+                .song {
+                    width: 200px;
+                    color: {{songColor}};
+                    overflow: hidden;
+                    margin-top: 18px;
+                    margin-left: 10px; 
+                    font-size: 22px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .artist {
+                    width: 200px;
+                    color: {{artistColor}};
+                    opacity: 0.7;
+                    font-size: 15px;
+                    margin-top: -5px;
+                    margin-left: 10px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                .cover {
+                    width: 80px;
+                    height: 80px;
+                }
+    
+                a {
+                    text-decoration: none;
+                }
+
+                div {
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+                }
+            </style>
+            <script type="text/javascript">
+                var timer = function() {
+                    setTimeout(function(){ window.location.reload(); }, {{timeRefresh}});
+                };
+                timer();
+            </script>
+            <div class="main">
+                    <center>
+                        <img src="data:image/png;base64, {{image}}" class="cover" />
+                    </center>
+                <div class="content">
+                        <div class="song">{{songName}}</div>
+                        <div class="artist">{{artistName}}</div>
+                </div>
+            </div>
+
+        </div>
+    </foreignObject>
+</svg>
