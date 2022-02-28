@@ -5,7 +5,8 @@
 Access this link `https://lastfm-currentsong.apigamers.com/current?user=<user_lastfm>` and change the parameters as needed. 
 
 - Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=USER_LASTFM)`. 
-- Using in OBS: widht: `480` and height: `133`
+- Using in OBS: widht: `480` and height: `133`.
+
 
 ### Theme
 
@@ -20,7 +21,16 @@ Pre-defined themes:
 
 Use `?user=USER_LASTFM&theme=dark`
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
+### Style
+
+You can customize the appearance of your Card however you wish with URL params.
+
+Pre-defined themes:
+
+- `default`(default)
+- `spotify`
+
+Use `?user=USER_LASTFM&style=spotify`
 
 ### Reload
 
@@ -30,4 +40,10 @@ You can use reload to refresh the page using this URL parameter.
 
 Use `?user=USER_LASTFM&reload=5000`
 
-## Project base: [novatorem](https://github.com/novatorem/novatorem)
+## Examples:
+
+`![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)`
+![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
+
+`![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)`
+![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)
