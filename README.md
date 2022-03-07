@@ -36,7 +36,7 @@ Use `?user=USER_LASTFM&style=spotify`
 
 You can use reload to refresh the page using this URL parameter.
 
-- `reload` - using in milliseconds(ms) `1000ms` = `1`
+- `reload` - using in milliseconds(ms) 5 second = `5000ms`
 
 Use `?user=USER_LASTFM&reload=5000`
 
