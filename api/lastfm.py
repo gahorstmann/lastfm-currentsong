@@ -64,7 +64,7 @@ def makeSVG(data, theme_select, style_select, time_refresh):
 
     try:
         item = data["recenttracks"]["track"][0]
-        image = loadImageB64(item["image"][3]["#text"])
+        image = loadImageB64(item["image"][0]["#text"])
         artistName = item["artist"]["#text"]
         songName = item["name"].replace("&", "&amp;")
         songURI = item["url"].replace("&", "&amp;")
