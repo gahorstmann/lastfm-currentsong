@@ -2,12 +2,11 @@
 
 FROM python:3.10.0
 
-WORKDIR /api
+WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt
 
-COPY api/ .
+COPY . .
 
-CMD ["python3", "lastfm.py"]
-#CMD ["gunicorn", "--workers=1", "--bind", "0.0.0.0:5000", "lastfm:app"]
+CMD ["python3", "main.py"]

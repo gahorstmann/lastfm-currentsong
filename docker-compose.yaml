@@ -6,7 +6,3 @@ services:
       - FLASK_DEBUG=1
     ports:
       - "5000:5000"
-    volumes:
-      - ./api:/api
-volumes:
-  persistent:
