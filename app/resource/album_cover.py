@@ -8,11 +8,12 @@ class AlbumCover:
     
     def get_image_lastfm(self, url) -> bytes:
         response = requests.get(url)
+        content = response.text
         if response.status_code != 200:
             return ""
-        if isinstance(response.content, bytes):
-             return response.content
-        return ""
+        if "thumbor call failed" in content:
+            return ""
+        return response.content
     
     def get_image(self, data: json) -> str:
         data.sort(key=lambda x: x["size"])
