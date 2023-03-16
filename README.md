@@ -43,7 +43,9 @@ Use `?user=USER_LASTFM&reload=5000`
 ## Examples:
 
 `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)`
+
 ![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
 
 `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)`
+
 ![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)

@@ -1,0 +1,43 @@
+{
+  "recenttracks": {
+    "track": [
+      {
+        "artist": {
+          "mbid": "d873aeb7-8bbe-4f79-91b8-0bc11c7ae313",
+          "#text": "Don Diablo"
+        },
+        "streamable": "0",
+        "image": [
+          {
+            "size": "small",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/ae50a99dc69afde2bc7ba3a54da632de.jpg"
+          },
+          {
+            "size": "medium",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/ae50a99dc69afde2bc7ba3a54da632de.jpg"
+          },
+          {
+            "size": "large",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/ae50a99dc69afde2bc7ba3a54da632de.jpg"
+          },
+          {
+            "size": "extralarge",
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/ae50a99dc69afde2bc7ba3a54da632de.jpg"
+          }
+        ],
+        "mbid": "",
+        "album": { "mbid": "", "#text": "FORΞVΞR (DΞLUXΞ ΞDITION)" },
+        "name": "Sail Away",
+        "url": "https://www.last.fm/music/Don+Diablo/_/Sail+Away",
+        "date": { "uts": "1678907890", "#text": "15 Mar 2023, 19:18" }
+      }
+    ],
+    "@attr": {
+      "user": "gabriel_ah",
+      "totalPages": "52703",
+      "page": "1",
+      "perPage": "1",
+      "total": "52703"
+    }
+  }
+}

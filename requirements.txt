@@ -1,16 +1,3 @@
-autopep8
-certifi
-chardet
-click
 Flask
-gunicorn
-idna
-itsdangerous
-Jinja2
-MarkupSafe
-pycodestyle
-python-dotenv
 requests
-toml
-urllib3
-Werkzeug
+markdown
