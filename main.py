@@ -7,8 +7,8 @@ from app.resource.lastfm_api import LastFM
 from app.resource.make_svg import MakeSvg
 
 
-LASTFM_TOKEN = os.getenv("LASTFM_TOKEN")
-PORT= os.getenv("PORT") or 5000
+LASTFM_TOKEN = os.environ.get('LASTFM_TOKEN')
+PORT = int(os.environ.get('PORT', 5000))
 
 print(LASTFM_TOKEN)
 
@@ -18,10 +18,10 @@ makeSVG = MakeSvg()
 
 @app.route('/', methods=['GET'])
 def index():
-    readme_file = open("README.md", "r")
-    md_template_string = markdown.markdown(
-        readme_file.read(), extensions=["fenced_code"]
-    )
+    with open("README.md", "r") as readme_file:
+        md_template_string = markdown.markdown(
+            readme_file.read(), extensions=["fenced_code"]
+        )
 
     return md_template_string
 
@@ -31,13 +31,12 @@ def current():
     theme_select = request.args.get('theme') or 'light'
     style_select = request.args.get('style') or 'default'
     time_refresh = request.args.get('reload') or '1500000000'
+    
     data = lastFM.get_current_track(user_lasftm)
-
     svg = makeSVG.generate(data, theme_select, style_select, time_refresh)
-        
     render = render_template(svg[0], **svg[1])
 
-    resp = Response(render, mimetype="image/svg+xml")
+    resp = Response(render)
     resp.headers["Cache-Control"] = "s-maxage=1"
 
     return resp
