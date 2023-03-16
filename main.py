@@ -31,17 +31,10 @@ def current():
     theme_select = request.args.get('theme') or 'light'
     style_select = request.args.get('style') or 'default'
     time_refresh = request.args.get('reload') or '1500000000'
-    size = request.args.get('size') or 'medium'
-    
-    sizes = {
-        "small": 0,
-        "medium": 1,
-        "large": 2,
-        "extralarge": 3,
-    }
-    image_size = sizes.get(size, 0)
-    data = lastFM.get_current_track(user_lasftm, image_size)
+    data = lastFM.get_current_track(user_lasftm)
+
     svg = makeSVG.generate(data, theme_select, style_select, time_refresh)
+        
     render = render_template(svg[0], **svg[1])
 
     resp = Response(render, mimetype="image/svg+xml")

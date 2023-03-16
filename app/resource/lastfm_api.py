@@ -10,10 +10,7 @@ class LastFM:
         # Cria um objeto Session do requests para reutilizar conexões HTTP
         self.session = requests.Session()
 
-    def get_current_track(self, username, image_size):
-        """
-        Retorna a música atual do usuário.
-        """
+    def get_current_track(self, username) -> json:
         params = {
             'method': 'user.getrecenttracks',
             'user': username,
@@ -22,23 +19,16 @@ class LastFM:
             'limit': 1,
         }
         response = self.session.get(self.base_url, params=params)
-
+        
         # Verifica se houve um erro na solicitação
         response.raise_for_status()
 
         # Decodifica a resposta JSON
         data = json.loads(response.text)
 
-        print(data)
-
         # Verifica se a solicitação foi bem-sucedida
         if 'error' in data:
             raise ValueError(data['message'])
 
-        # Extrai informações relevantes da resposta
-        track = data['recenttracks']['track'][0]['name']
-        artist = data['recenttracks']['track'][0]['artist']['#text']
-        album = data['recenttracks']['track'][0]['album']['#text']
-        image = data['recenttracks']['track'][0]["image"][image_size]["#text"]
-        
-        return track, artist, album, image
+        # Extrai a ultima música
+        return data['recenttracks']['track'][0]
