@@ -37,6 +37,7 @@ def current():
     render = render_template(svg[0], **svg[1])
 
     resp = Response(render)
+    resp.headers["Content-Type"] = "image/svg+xml"
     resp.headers["Cache-Control"] = "s-maxage=1"
 
     return resp
