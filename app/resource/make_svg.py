@@ -1,5 +1,4 @@
 import random
-import requests
 import json
 
 from app.resource.album_cover import AlbumCover
@@ -30,8 +29,12 @@ class MakeSvg:
         except (KeyError, json.JSONDecodeError):
             print(f"Failed to load templates. Using default style.")
             return templates["style"]["default"]
+        
+    def replace_char(self, data) -> str:
+        result = data.replace("&","&amp;")
+        return result
 
-    def generate(self, data: list, theme_select: str, style_select: str, time_refresh: str) -> tuple:
+    def generate(self, data: json, theme_select: str, style_select: str, time_refresh: str) -> tuple:
         bar_count = 84
         content_bar = "".join([f"<div class='bar' style='left:{i*4}px; animation-duration:{random.randint(1000, 1350)}ms;'></div>" for i in range(bar_count)])
         album_cover = AlbumCover()
@@ -41,9 +44,8 @@ class MakeSvg:
 
         data_dict = {
             "contentBar": content_bar,
-            "artistName": data["artist"]["#text"],
-            "songName": data["name"],
-            "songURI": data["url"],
+            "artistName": self.replace_char(data["artist"]["#text"]),
+            "songName": self.replace_char(data["name"]),
             "image": album_cover.get_image(data["image"]),
             "backgroundColor": theme.get("color", {}).get("background", "#fff"),
             "songColor": theme.get("color", {}).get("song", "#000"),
