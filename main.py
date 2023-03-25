@@ -10,8 +10,6 @@ from app.resource.make_svg import MakeSvg
 LASTFM_TOKEN = os.environ.get('LASTFM_TOKEN')
 PORT = int(os.environ.get('PORT', 5000))
 
-print(LASTFM_TOKEN)
-
 app = Flask(__name__, template_folder="app/templates")
 lastFM = LastFM(LASTFM_TOKEN)
 makeSVG = MakeSvg()
