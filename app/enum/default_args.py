@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class DefaultArgs(Enum):
     THEME = 'light'
     STYLE = 'default'

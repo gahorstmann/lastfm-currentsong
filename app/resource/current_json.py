@@ -1,11 +1,9 @@
-import requests
-
-from flask import request, render_template, Response
+from flask import request
 from flask_restful import Resource
 
 from app.enum.default_args import DefaultArgs
 from app.resource.lastfm_api import LastFM
-#from app.util.make_svg import MakeSVG
+
 
 class CurrentJson(Resource):
     # /currentjson/{user_id}

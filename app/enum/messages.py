@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Messages(Enum):
     SUCCESS = "Success"
     ERROR = "Error"
