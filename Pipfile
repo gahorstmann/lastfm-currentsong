@@ -9,6 +9,8 @@ requests = "*"
 markdown = "*"
 logging-json = "*"
 flask-restful = "*"
+pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
