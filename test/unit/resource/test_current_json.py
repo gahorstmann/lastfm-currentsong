@@ -54,7 +54,7 @@ class TestCurrentJson(unittest.TestCase):
         
         # When
         response = self.client.get('/currentjson/user')
-        print(json.loads(response.text))
+
         # Then
         mock_last_fm.assert_called_once()
         self.assertEqual(response.status_code, 200)

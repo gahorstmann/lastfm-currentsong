@@ -34,7 +34,7 @@ class TestModelCurrent(unittest.TestCase):
         result = mock_current.json()
         
         # Then
-        self.assertEquals(result, DEFAULT_JSON)
+        self.assertEqual(result, DEFAULT_JSON)
 
     def test_set_theme(self):
         # Given
@@ -45,7 +45,7 @@ class TestModelCurrent(unittest.TestCase):
         result = mock_current.json().get('theme')
         
         # Then
-        self.assertEquals(result, THEME)
+        self.assertEqual(result, THEME)
         
     def test_set_style(self):
         # Given
@@ -56,4 +56,4 @@ class TestModelCurrent(unittest.TestCase):
         result = mock_current.json().get('style')
         
         # Then
-        self.assertEquals(result, STYLE)
+        self.assertEqual(result, STYLE)

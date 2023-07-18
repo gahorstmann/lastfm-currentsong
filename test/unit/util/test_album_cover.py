@@ -13,7 +13,7 @@ sys.path.insert(0, root_path)
 
 
 class TestAlbumCover(unittest.TestCase):
-    @mock.patch('request.get')
+    @mock.patch('requests.get')
     def get_image_lastfm(self, mock_request):
         # Given
         mock_request.return_value = HTTPResponse()
