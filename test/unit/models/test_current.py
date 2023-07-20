@@ -23,6 +23,7 @@ DEFAULT_JSON = {
 
 THEME = 'dark'
 STYLE = 'spotify'
+RELOAD = 10000000
 
 
 class TestModelCurrent(unittest.TestCase):
@@ -57,3 +58,15 @@ class TestModelCurrent(unittest.TestCase):
         
         # Then
         self.assertEqual(result, STYLE)
+        
+    
+    def test_set_reload(self):
+        # Given
+        mock_current = CurrentModel('user', 'artist', 'song', 'song_url', 'album', 'album_cover')
+        
+        # When
+        mock_current.set_reload(RELOAD)
+        result = mock_current.json().get('reload')
+        
+        # Then
+        self.assertEqual(result, RELOAD)

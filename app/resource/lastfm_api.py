@@ -21,7 +21,6 @@ class LastFM:
             'limit': 1,
         }
         response = self.session.get(self.base_url, params=params)
-        response.raise_for_status()
         data = json.loads(response.text)
         if 'error' in data:
             raise ValueError(data['message'])
