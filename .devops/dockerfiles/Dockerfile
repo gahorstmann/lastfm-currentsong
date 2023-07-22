@@ -1,20 +1,12 @@
-# syntax=docker/dockerfile:1
-
 FROM python:3.11-slim
 
 WORKDIR /app
-
-COPY Pipfile ./
+COPY requirements.txt ./
 
 RUN python -m pip install --upgrade pip
-RUN pip install pipenv 
-RUN pipenv install --dev --deploy
+RUN  pip install -r requirements.txt
 
-WORKDIR /app
-COPY . /app
-
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
+COPY . .
 
 CMD ["python", "main.py"]
 EXPOSE 8080

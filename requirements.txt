@@ -1,0 +1,7 @@
+flask
+flask-restful
+requests
+markdown
+logging-json
+pytest
+coverage

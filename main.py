@@ -13,4 +13,4 @@ api.add_resource(Current, '/current/<user_id>')
 api.add_resource(CurrentJson, '/currentjson/<user_id>')
 
 if __name__ == '__main__':
-    app.run(port=SysConfigs.PORT.value)
+    app.run(host=SysConfigs.HOST.value, port=SysConfigs.PORT.value)
