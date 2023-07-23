@@ -2,33 +2,32 @@ import requests
 import json
 import time
 
-class LastFM:
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.base_url = 'https://ws.audioscrobbler.com/2.0/'
+from app.enum.global_configs import SysConfigs
+from app.enum.default_args import DefaultArgs
+from app.models.current import CurrentModel
 
-        # Cria um objeto Session do requests para reutilizar conexões HTTP
+class LastFM:
+    def __init__(self):
+        self.api_key = SysConfigs.LASTFM_TOKEN.value
+        self.base_url = SysConfigs.LASTFM_URL.value
         self.session = requests.Session()
 
-    def get_current_track(self, username) -> json:
+    def get_current_track(self, user_id: str = DefaultArgs.USER_ID.value) -> CurrentModel:
         params = {
             'method': 'user.getrecenttracks',
-            'user': username,
+            'user': user_id,
             'api_key': self.api_key,
             'format': 'json',
             'limit': 1,
         }
         response = self.session.get(self.base_url, params=params)
-        
-        # Verifica se houve um erro na solicitação
-        response.raise_for_status()
-
-        # Decodifica a resposta JSON
         data = json.loads(response.text)
-
-        # Verifica se a solicitação foi bem-sucedida
         if 'error' in data:
             raise ValueError(data['message'])
 
-        # Extrai a ultima música
-        return data['recenttracks']['track'][0]
+        return CurrentModel(user= user_id, 
+                                  artist= data['recenttracks']['track'][0]['artist']['#text'],
+                                  song= data['recenttracks']['track'][0]['name'],
+                                  song_url = data['recenttracks']['track'][0]['url'],
+                                  album = data['recenttracks']['track'][0]['album']['#text'],
+                                  album_cover = data['recenttracks']['track'][0]['image'])

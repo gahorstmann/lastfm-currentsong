@@ -7,8 +7,12 @@ name = "pypi"
 flask = "*"
 requests = "*"
 markdown = "*"
+logging-json = "*"
+flask-restful = "*"
+pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.11"

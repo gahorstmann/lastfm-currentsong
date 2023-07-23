@@ -2,9 +2,9 @@
 
 ## Using
 
-Access this link `https://lastfm-currentsong.apigamers.com/current?user=<user_lastfm>` and change the parameters as needed. 
+Access this link `https://lastfm-currentsong.apigamers.com/current/<user_lastfm>` and change the parameters as needed. 
 
-- Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current?user=USER_LASTFM)`. 
+- Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current/USER_LASTFM)`. 
 - Using in OBS: widht: `480` and height: `133`.
 
 
@@ -19,7 +19,7 @@ Pre-defined themes:
 - `nord`
 - `dracula`
 
-Use `?user=USER_LASTFM&theme=dark`
+Use `/USER_LASTFM?theme=dark`
 
 ### Style
 
@@ -30,7 +30,7 @@ Pre-defined themes:
 - `default`(default)
 - `spotify`
 
-Use `?user=USER_LASTFM&style=spotify`
+Use `/USER_LASTFM?style=spotify`
 
 ### Reload
 
@@ -38,14 +38,14 @@ You can use reload to refresh the page using this URL parameter.
 
 - `reload` - using in milliseconds(ms) 5 second = `5000ms`
 
-Use `?user=USER_LASTFM&reload=5000`
+Use `/USER_LASTFM?reload=5000`
 
 ## Examples:
 
-`![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)`
+`![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark)`
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark)
+![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark)
 
-`![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)`
+`![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark&style=spotify)`
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current?user=gabriel_ah&theme=dark&style=spotify)
+![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark&style=spotify)
