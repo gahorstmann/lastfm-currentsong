@@ -12,10 +12,14 @@ class CurrentJson(Resource):
         style_select = request.args.get('style') or DefaultArgs.STYLE.value
         time_refresh = request.args.get('reload') or DefaultArgs.RELOAD.value
 
-        last_fm = LastFM()
-        data = last_fm.get_current_track(user_id)
-        data.set_theme(theme_select)
-        data.set_style(style_select)
-        data.set_reload(time_refresh)
-        
-        return data.json(), 200
+        try:
+            last_fm = LastFM()
+            data = last_fm.get_current_track(user_id)
+            data.set_theme(theme_select)
+            data.set_style(style_select)
+            data.set_reload(time_refresh)
+            return data.json(), 200
+        except:
+            return {
+                "message": "Error in Request data"
+            }, 400
