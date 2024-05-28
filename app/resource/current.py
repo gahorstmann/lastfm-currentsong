@@ -13,18 +13,23 @@ class Current(Resource):
         style_select = request.args.get('style') or DefaultArgs.STYLE.value
         time_refresh = request.args.get('reload') or DefaultArgs.RELOAD.value
 
-        last_fm = LastFM()
-        data = last_fm.get_current_track(user_id)
-        data.set_theme(theme_select)
-        data.set_style(style_select)
-        data.set_reload(time_refresh)
-        
-        make_svg = MakeSVG()
-        svg = make_svg.generate(data.json())
-        render = render_template(svg[0], **svg[1])
+        try:
+            last_fm = LastFM()
+            data = last_fm.get_current_track(user_id)
+            data.set_theme(theme_select)
+            data.set_style(style_select)
+            data.set_reload(time_refresh)
+            
+            make_svg = MakeSVG()
+            svg = make_svg.generate(data.json())
+            render = render_template(svg[0], **svg[1])
 
-        resp = Response(render)
-        resp.headers["Content-Type"] = "image/svg+xml"
-        resp.headers["Cache-Control"] = "s-maxage=1"
+            resp = Response(render)
+            resp.headers["Content-Type"] = "image/svg+xml"
+            resp.headers["Cache-Control"] = "s-maxage=1"
 
-        return resp
+            return resp
+        except Exception as exc:
+            return {
+                "message": exc.args
+            }, 400
