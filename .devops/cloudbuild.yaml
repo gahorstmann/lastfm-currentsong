@@ -17,8 +17,8 @@ steps:
     args: [
       "--dockerfile=.devops/dockerfiles/Dockerfile",
       "--context=/build/source-code",
-      "--destination=us-east1-docker.pkg.dev/$PROJECT_ID/lastfm/$_IMAGE_NAME:$SHORT_SHA",
-      "--destination=us-east1-docker.pkg.dev/$PROJECT_ID/lastfm/$_IMAGE_NAME:latest"
+      "--destination=$_CONTAINER_REGISTRY/$_IMAGE_NAME:$SHORT_SHA",
+      "--destination=$_CONTAINER_REGISTRY/$_IMAGE_NAME:latest"
     ]
 
   - id: 'app-deploy-run'
@@ -30,6 +30,6 @@ steps:
       - deploy
       - $_IMAGE_NAME
       - --image
-      - us-east1-docker.pkg.dev/$PROJECT_ID/lastfm/$_IMAGE_NAME:$SHORT_SHA
+      - $_CONTAINER_REGISTRY/$_IMAGE_NAME:$SHORT_SHA
       - --region
       - $_REGION_NAME
