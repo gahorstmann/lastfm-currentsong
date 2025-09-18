@@ -1,51 +1,122 @@
-# Current/Recent song in Lastfm
+# Last.fm Current Song - JAMStack
 
-## Using
+A modern JAMStack application that displays the current playing song from Last.fm using React frontend and Cloudflare Pages Functions.
 
-Access this link `https://lastfm-currentsong.apigamers.com/current/<user_lastfm>` and change the parameters as needed. 
+## 🏗️ Architecture
 
-- Using in Github: `![Spotify](https://lastfm-currentsong.apigamers.com/current/USER_LASTFM)`. 
-- Using in OBS: widht: `480` and height: `133`.
+- **Frontend**: React application built with Vite
+- **Backend**: Cloudflare Pages Function for Last.fm API integration
+- **Deployment**: Cloudflare Pages hosting
 
+## 🚀 Quick Start
 
-### Theme
+### Development
 
-You can customize the appearance of your Card however you wish with URL params.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Pre-defined themes:
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-- `light`(default)
-- `dark`
-- `nord`
-- `dracula`
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-Use `/USER_LASTFM?theme=dark`
+## ⚙️ Cloudflare Pages Setup
 
-### Style
+### 1. Environment Variables
 
-You can customize the appearance of your Card however you wish with URL params.
+Configure the following environment variable in your Cloudflare Pages dashboard:
 
-Pre-defined themes:
+- **`LASTFM_API_KEY`**: Your Last.fm API key
+  - Get it from: https://www.last.fm/api/account/create
+  - Go to your Cloudflare Pages project > Settings > Environment variables
+  - Add `LASTFM_API_KEY` with your Last.fm API key
 
-- `default`(default)
-- `spotify`
+### 2. Build Settings
 
-Use `/USER_LASTFM?style=spotify`
+In Cloudflare Pages, use these build settings:
 
-### Reload
+- **Framework preset**: None
+- **Build command**: `npm run build`
+- **Build output directory**: `dist`
+- **Root directory**: `/` (repository root)
 
-You can use reload to refresh the page using this URL parameter.
+### 3. Functions
 
-- `reload` - using in milliseconds(ms) 5 second = `5000ms`
+The application includes a Cloudflare Pages Function at `/functions/currentsong.js` that:
+- Fetches current track from Last.fm API
+- Returns JSON data for the React frontend
+- Handles errors gracefully
+- Uses the hardcoded username: `gahorstmann`
 
-Use `/USER_LASTFM?reload=5000`
+## 📡 API Endpoints
 
-## Examples:
+### `/api/currentsong`
 
-`![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark)`
+Returns the current playing song data in JSON format:
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark)
+```json
+{
+  "user": "gahorstmann",
+  "artist": "Artist Name",
+  "song": "Song Title",
+  "song_url": "https://www.last.fm/music/...",
+  "album": "Album Name",
+  "album_cover": [...]
+}
+```
 
-`![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark&style=spotify)`
+## 🎵 Features
 
-![Spotify](https://lastfm-currentsong.apigamers.com/current/gabriel_ah?theme=dark&style=spotify)
+- **Real-time updates**: Auto-refreshes every 60 seconds
+- **Responsive design**: Works on desktop and mobile
+- **Album covers**: Displays album artwork when available
+- **Error handling**: Graceful error messages and retry functionality
+- **Last.fm integration**: Direct links to Last.fm track pages
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+/
+├── src/
+│   ├── pages/
+│   │   └── index.jsx          # Main React component
+│   ├── main.jsx               # React app entry point
+│   └── style.css              # Application styles
+├── functions/
+│   └── currentsong.js         # Cloudflare Pages Function
+├── public/
+│   └── placeholder-album.png  # Fallback album cover
+├── package.json               # Node.js dependencies
+├── vite.config.js             # Vite configuration
+└── index.html                 # HTML template
+```
+
+### Environment Variables
+
+For local development, you can create a `.env` file (not included in the repository):
+
+```env
+LASTFM_API_KEY=your_lastfm_api_key_here
+```
+
+Note: Cloudflare Pages Functions use the environment variables configured in the Cloudflare dashboard.
+
+## 🔧 Legacy Version
+
+The previous Python Flask version has been archived. The new JAMStack version provides:
+
+- ✅ Better performance with static hosting
+- ✅ Modern React frontend
+- ✅ Serverless functions for API calls
+- ✅ Easy deployment to Cloudflare Pages
+- ✅ Built-in CDN and caching

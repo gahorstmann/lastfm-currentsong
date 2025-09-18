@@ -1,0 +1,6 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#333"/>
+  <circle cx="100" cy="100" r="60" fill="#555"/>
+  <circle cx="100" cy="100" r="15" fill="#333"/>
+  <text x="100" y="170" text-anchor="middle" fill="#888" font-family="Arial" font-size="12">No Album Art</text>
+</svg>
