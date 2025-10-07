@@ -1,5 +1,5 @@
 {
-	"name": "api-worker",
+	"name": "lastfm-worker",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
