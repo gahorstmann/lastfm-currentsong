@@ -7,6 +7,16 @@ export default {
 		const url = new URL(request.url);
 		const user = url.searchParams.get('user');
 
+		const headers = {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*', // permite acesso de qualquer origem
+			'Access-Control-Allow-Methods': 'GET, OPTIONS',
+		};
+
+		if (request.method === 'OPTIONS') {
+			return new Response(null, { headers });
+		}
+
 		if (!user) {
 			return new Response(JSON.stringify({ error: "O parâmetro 'user' é obrigatório." }), {
 				status: 400,
